@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+
+<?php
+
+$conn = new mysqli("localhost", "root", "", "events_db");
+
+
+if (!$conn || !$res = $conn->query("SELECT * FROM events WHERE id = " . $_GET["id"])) {
+    echo $conn->connect_error;
+    die();
+}
+
+$item = $res->fetch_assoc();
+?>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>lab 1</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="header">
+            <div class="header-text">
+                student's<br>events
+            </div>
+        </div>
+
+        <div class="detail-container">
+            <div class="text-field-group">
+                <div class="title-field">
+                    <? echo $item["title"] ?>
+                </div>
+                <div class="desc-field">
+                    <p>
+                        <? echo $item["long_desc"] ?>
+                    <p>
+                </div>
+            </div>
+            <div class="data-field-group">
+                <div class="when data-label-group">
+                    <div class="data-lable">когда:</div>
+                    <div class="data-data">
+                        <? echo str_replace("-", ".", $item["event_date"]) ?>
+                    </div>
+                </div>
+                <div class="place data-label-group">
+                    <div class="data-lable">подробнее:</div>
+                    <div class="data-data">
+                        <? echo $item["place"] ?>
+                    </div>
+                </div>
+                <div class="phone data-label-group">
+                    <div class="data-lable">тел:</div>
+                    <div class="data-data">
+                        <? echo $item["phone"] ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="footer">НГТУ, 2023</div>
+
+</body>
+
+</html>
