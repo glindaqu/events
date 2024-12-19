@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" th:href="@{/css/add_event.css}">
+    <title>Календарь событий</title>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="header">
+        <div class="header-text">
+            События
+        </div>
+        <div class="header-menu" id="menu-body">
+            <a href="/"><input class="header-menu-item" type="submit" value="все события"/></a>
+            <a href="?type=science"><input class="header-menu-item" type="submit" value="наука"/></a>
+            <a href="?type=prof"><input class="header-menu-item" type="submit" value="профком"/></a>
+            <a href="?type=sport"><input class="header-menu-item" type="submit" value="спорт"/></a>
+        </div>
+
+        <a class="open-menu-btn" id="menu-btn">
+            <div class="open-menu-btn-item"></div>
+            <div class="open-menu-btn-item"></div>
+            <div class="open-menu-btn-item"></div>
+        </a>
+    </div>
+    <div class="inner-container">
+        <form method="post" action="/admin/saveEvent">
+            <label>
+                Название
+                <input name="title">
+            </label>
+            <label>
+                Описание
+                <input name="description">
+            </label>
+            <label>
+                Место проведения
+                <input name="place">
+            </label>
+            <label>
+                Организатор
+                <input name="organizer">
+            </label>
+            <label>
+                Стоимость билета
+                <input name="ticket_price">
+            </label>
+            <label>
+                Цвет подложки (hex)
+                <input name="color">
+            </label>
+            <input type="submit" value="Добавить">
+        </form>
+    </div>
+</div>
+</div>
+
+<script th:src="@{/js/main.js}"></script>
+
+</body>
+
+</html>

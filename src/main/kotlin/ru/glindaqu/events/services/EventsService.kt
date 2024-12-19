@@ -12,4 +12,7 @@ class EventsService(private val eventsRepo: EventRepo) {
     fun insertEvent(event: Event) {
         eventsRepo.save(event)
     }
+    fun deleteEvent(event: Event) {
+        eventsRepo.delete(event)
+    }
 }

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <title>Календарь событий</title>
 </head>
@@ -14,28 +14,26 @@
         <div class="header-text">
             События
         </div>
-        <div id="menu-body" class="header-menu">
-            <a href="index.php"><input type="submit" class="header-menu-item" value="все события"/></a>
-            <a href="index.php?cat=2"><input type="submit" class="header-menu-item" value="наука"/></a>
-            <a href="index.php?cat=3"><input type="submit" class="header-menu-item" value="профком"/></a>
-            <a href="index.php?cat=1"><input type="submit" class="header-menu-item" value="спорт"/></a>
+        <div class="header-menu" id="menu-body">
+            <a href="/"><input class="header-menu-item" type="submit" value="все события"/></a>
+            <a href="?type=science"><input class="header-menu-item" type="submit" value="наука"/></a>
+            <a href="?type=prof"><input class="header-menu-item" type="submit" value="профком"/></a>
+            <a href="?type=sport"><input class="header-menu-item" type="submit" value="спорт"/></a>
         </div>
 
-        <a id="menu-btn" class="open-menu-btn" href="#menu">
+        <a class="open-menu-btn" href="#menu" id="menu-btn">
             <div class="open-menu-btn-item"></div>
             <div class="open-menu-btn-item"></div>
             <div class="open-menu-btn-item"></div>
         </a>
     </div>
-
     <div class="inner-container">
         <a href="detail">
-            <div class="event-item <?php echo $css_class ?>">
+            <div class="event-item">
                 <div class="event-item-header">
                     <div class="event-date">
-                        <?php echo str_replace("-", ".", $row["event_date"]) ?>
                     </div>
-                    <img class="event-ico" src="./static/ico/" alt=""/>
+                    <img alt="" class="event-ico" src="./static/ico/"/>
                 </div>
                 <div class="event-item-info">
                     <div class="event-title">
@@ -48,7 +46,7 @@
     </div>
 </div>
 
-<div class="footer">НКЭиВТ, 2024</div>
+<!--<div th:replace="fragments/footer :: footer"></div>-->
 
 <script th:src="@{/js/main.js}"></script>
 

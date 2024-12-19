@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <title>Календарь событий</title>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="header">
+        <div class="header-text">
+            События
+        </div>
+        <div class="header-menu" id="menu-body">
+            <a href="/"><input class="header-menu-item" type="submit" value="все события"/></a>
+            <a href="?type=science"><input class="header-menu-item" type="submit" value="наука"/></a>
+            <a href="?type=prof"><input class="header-menu-item" type="submit" value="профком"/></a>
+            <a href="?type=sport"><input class="header-menu-item" type="submit" value="спорт"/></a>
+        </div>
+
+        <a class="open-menu-btn" id="menu-btn">
+            <div class="open-menu-btn-item"></div>
+            <div class="open-menu-btn-item"></div>
+            <div class="open-menu-btn-item"></div>
+        </a>
+    </div>
+    <div class="inner-container">
+        <a class="add-event" href="/admin/addEvent">+</a>
+        <div class="events-table">
+            <div class="events-table-row events-table-row__header">
+                <div class="events-table-row__place">Место</div>
+                <div class="events-table-row__title">Название</div>
+                <div class="events-table-row__ticket_price">Цена</div>
+                <div class="events-table-row__organizer">Организатор</div>
+                <div class="events-table-row__description">Описание</div>
+            </div>
+            <div class="events-table-body">
+                <th:block th:each="event : ${events}">
+                    <div class="events-table-row">
+                        <div class="events-table-row__place" th:text="${event.place}"></div>
+                        <div class="events-table-row__title" th:text="${event.title}"></div>
+                        <div class="events-table-row__ticket_price" th:text="${event.ticketPrice}"></div>
+                        <div class="events-table-row__organizer" th:text="${event.organizer}"></div>
+                        <div class="events-table-row__description" th:text="${event.description}"></div>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/main.js}"></script>
+
+</body>
+
+</html>

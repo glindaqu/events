@@ -12,5 +12,6 @@ data class Event(
     val title: String = "",
     val ticketPrice: Int = -1,
     val organizer: String = "",
-    val description: String = ""
+    val description: String = "",
+    val color: String = "ffffff"
 )
